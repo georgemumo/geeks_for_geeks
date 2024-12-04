@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Navbar</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .nav-item a:hover {
+            text-decoration: underline;color: red;
+
+        }
+        .dropdown-content {
+            display:none;
+        }
+        .dropdown-content.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+
+
+
+            <ul class="navbar-nav flex-row">
+                <li>
+                    <a href=""><h1>THE NAIROBI HOSPITAL</h1></a>
+                </li>
+
+                
+            </ul>
+
+            <form class="d-flex me-3">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+
+            <div class="card-row" style="width: 18rem;">
+                <div class="card-body">
+                    <a href=""> <h5 class="card-title">Covid 19 Center</h5></a>
+                <div class="card-body">
+                    <a href=""><h5>Contact us</h5></a>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    
+
+    <nav class="navbar  navbar-expand-lg   navbar-dark bg-black" style="height: 30px">
+        <div>
+        <ul class="navbar nav">
+            <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">About</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="">About us</a>
+                <a class= "dropdown-item" href=""> History</a>
+                <a class = "dropdown-item" href=""> Board of management</a>
+                <a class = "dropdown-item" href=""> Board of trustees</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbardrop1" data-toggle="dropdown">clinical services</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="">Pharmacy services</a>
+                <a class="dropdown-item" href="">Laboratory Services</a>
+                <a class="dropdown-item" href="">Radiology Services</a>
+                <a class="dropdown-item" href="">Dental procedures</a>
+            </div>
+
+
+        </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">Other services</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="" >Laundry services</a>
+                    <a class="dropdown-item" href="" >International desk</a>
+                    <a class="dropdown-item" href="" >Convection center</a>
+                </div>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">News</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="">News</a>
+                    <a class="dropdown-item" href="">Tenders</a>
+                    <a class="dropdown-item" href="">Careers</a>
+                </div>
+            </li>
+        </ul>
+        </div>
+
+    </nav>
+
+
+
+{% for post in object_list %}
+	<h1>{{post.title}}</h1>
+	<small>By: {{post.author.first_name}} {{post.author.last_name}}</small>
+
+
+<p>{{post.body}}</p>
+
+
+{% endfor %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        // Add event listeners for all dropdown toggles
+        document.querySelectorAll('.nav-link.dropdown-toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+
+
+                document.querySelectorAll('.dropdown-content').forEach(function (dropdown) {
+                    if (dropdown !== toggle.nextElementSibling) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+
+
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
