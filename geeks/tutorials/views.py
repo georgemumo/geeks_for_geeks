@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.views.generic import TemplateView
 from . models import post
-from ..templates.forms import UserRegisterForm
+from geeks.templates.forms import UserRegisterForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
